@@ -1,0 +1,66 @@
+<!-- <p #para >Got data</p> -->
+<!-- <pre>
+  {{ res | json}}
+</pre> -->
+<div>
+ <table class="table"> 
+   <thead>
+  <tr>
+    <th scope="col">Order No</th>
+    <th scope="col">Date</th>
+    <th scope="col">Customer Name</th>
+    <th scope="col">Customer Phone</th>
+    <th scope="col">Total Price</th>
+    <th scope="col"><button (click)="new()" class="btn btn-success">
+      New Order
+    </button>
+  </th>
+  
+   
+  
+  </tr>
+</thead> 
+<tbody>
+  <tr *ngFor="let o of res">
+    <td>
+      {{o.order_no}}
+    </td>
+    <td>
+      {{o.due_date}}
+    </td><td>
+      {{o.buyer_name}}
+    </td><td>
+      {{o.customer_phone}}
+    </td><td>
+      {{o.total}}
+    </td>
+   <td ><button style="margin: 0.3rem;" class="btn btn-info" (click)="edit(o)">Edit</button>
+    <button class="btn btn-danger" (click)="delete(o)">Delete</button></td>
+  </tr>
+  </tbody>
+  </table>
+</div>
+
+<div *ngIf="editState" class="form-modal1">
+    <form (ngSubmit)="onSubmit()" class="col-md-4">
+      <div class="form-group">
+        <label >Date</label>
+        <input type="text" class="form-control"   [(ngModel)]="ed.due_date" name="due_date" placeholder="date">
+      </div>
+      <div class="form-group">
+        <label >Buyer Name</label>
+        <input type="text" class="form-control"   [(ngModel)]="ed.buyer_name" name="name" placeholder="Buyer name">
+      </div>
+      <div class="form-group">
+        <label >Customer phone</label>
+        <input type="number" class="form-control"  pattern="\d*" maxlength="10"  [(ngModel)]="ed.customer_phone" name="customer_phone" placeholder="customer_phone">
+      </div>
+      <div class="form-group">
+        <label >Total</label>
+        <input type="number" class="form-control"   [(ngModel)]="ed.total" name="total" placeholder="total">
+      </div>
+      
+      <input type="submit" value="Submit" class="btn btn-primary">
+      <button class="btn btn-secondary" (click)="cancel()">Cancel</button>
+    </form>
+</div>

@@ -1,0 +1,7 @@
+.center{
+    background: rgb(147, 180, 145);
+    border-radius:12px;
+    box-shadow:2px 2px 2px 2px grey;
+    padding:1rem;
+    width:30%;
+}
